@@ -1,0 +1,82 @@
+# Everything here runs without touching a network.
+#
+# The live suite is deliberately not in CI: it spends real consensus rounds on
+# a shared test network, and a job that goes red because somebody else was
+# using it teaches a reader to ignore red. It is run by hand before a
+# deployment, and its record is committed -- which this workflow then holds the
+# repository to.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    name: contract -- lint and Direct Mode
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+          # A plain install silently keeps 0.11.0, which cannot validate
+          # against a genvm-manager v0.6 bundle at all.
+          python -m pip install --force-reinstall --no-deps genvm-linter==0.11.1rc2
+      - name: The runner pin is the one StudioNet serves
+        run: |
+          grep -q 'py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6' \
+            contracts/provenance.py
+          # test and latest are local aliases; no GenLayer network accepts them.
+          ! grep -qE 'py-genlayer:(test|latest)' contracts/provenance.py
+      - name: The contract is pure ASCII
+        run: |
+          # genvm-lint reads it with the platform codec, and one curly quote
+          # stops it dead with a decode error rather than a lint message.
+          ! LC_ALL=C grep -qP '[^\x00-\x7F]' contracts/provenance.py
+      - name: genvm-lint
+        run: genvm-lint check contracts/provenance.py --json
+      - name: Direct Mode
+        run: python -m pytest tests/direct -q
+
+  console:
+    name: console -- lint, types and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.12.0"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - name: Build
+        env:
+          NEXT_PUBLIC_CHAIN_ID: "61999"
+          NEXT_PUBLIC_PROVENANCE_CONTRACT: "0x0000000000000000000000000000000000000000"
+        run: npm run build
+
+  records:
+    name: records -- the published claims match the records
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # The deployment record must describe the contract that is in the
+      # repository now, the live record must be about the contract that record
+      # names, and the published report must still be what the live record
+      # generates. A claim like that decays silently; this is what notices.
+      - name: The records agree with each other
+        run: python scripts/check_records.py

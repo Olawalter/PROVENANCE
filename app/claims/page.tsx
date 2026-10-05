@@ -6,7 +6,7 @@ import { useState } from "react";
 import { configResult } from "@/lib/config/env";
 import { reads, VERDICTS } from "@/lib/genlayer/contract";
 import { SLOW_POLL, useRead } from "@/lib/genlayer/hooks";
-import { VERDICT_WORDS, claimLabel, relativeTime, words } from "@/lib/format/present";
+import { VERDICT_WORDS, claimLabel, formatTime, words } from "@/lib/format/present";
 import { ConfigProblem, Loading, Nothing, Problem } from "@/components/shell/empty";
 import { StateChip, VerdictChip } from "@/components/shell/status";
 
@@ -18,7 +18,6 @@ import { StateChip, VerdictChip } from "@/components/shell/status";
 export default function ClaimsPage() {
   const [filter, setFilter] = useState<string>("ALL");
   const claims = useRead(reads.claims(0, 50), { pollMs: SLOW_POLL });
-  const now = Date.now();
 
   if (!configResult.ok) return <ConfigProblem />;
 
@@ -94,8 +93,8 @@ export default function ClaimsPage() {
                         : <span className="text-xs text-[var(--muted)]">Not yet read</span>}
                     </td>
                     <td className="px-4 py-3 align-top text-xs text-[var(--muted)]">
-                      {relativeTime(claim.adjudicated_at || claim.frozen_at
-                                    || claim.created_at, now)}
+                      {formatTime(claim.adjudicated_at || claim.frozen_at
+                                  || claim.created_at)}
                     </td>
                   </tr>
                 ))}

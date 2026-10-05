@@ -1,10 +1,14 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import next from "eslint-config-next";
 
-const compat = new FlatCompat({ baseDirectory: dirname(fileURLToPath(import.meta.url)) });
-
-export default [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  { ignores: [".next/**", "node_modules/**", "contracts/**", "tests/**", "scripts/**"] },
+// Flat config directly from the package. Routing it through FlatCompat, as the
+// older examples do, feeds eslint a config object with a circular reference and
+// it fails while trying to report the error rather than while linting.
+const config = [
+  ...next,
+  {
+    ignores: [".next/**", "node_modules/**", "contracts/**", "tests/**",
+              "scripts/**", "fixtures/**"],
+  },
 ];
+
+export default config;

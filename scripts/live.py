@@ -103,7 +103,7 @@ class Run:
 
     # -- calls ----------------------------------------------------------------
     def write(self, label, method, args, step=None, expect_refusal=False,
-              value=None):
+              value=None, allow_undecided=False):
         client = self.client(label)
         kwargs = {"address": self.address, "function_name": method, "args": args}
         if value is not None:
@@ -140,9 +140,34 @@ class Run:
             + (f"  REFUSED: {reason[:70]}" if refused else ""))
         if expect_refusal:
             check(refused, f"{entry['step']} was supposed to be refused")
-        else:
+        elif not allow_undecided:
             check(not refused, f"{entry['step']} was refused: {reason}")
+            check(entry["status"] in ("ACCEPTED", "FINALIZED"),
+                  f"{entry['step']} ended {entry['status']}, so it wrote nothing")
         return entry
+
+    def adjudicate(self, claim_id, step, attempts=3):
+        """Ask for an adjudication, and ask again if the round writes nothing.
+
+        A round the validators do not agree about is a real outcome, not an
+        error: it leaves the claim exactly as it was and anybody may ask again.
+        The protocol says so, so the suite does the same rather than treating a
+        contested round as a failed build."""
+        rounds = []
+        for attempt in range(attempts):
+            entry = self.write("reader", "adjudicate", [claim_id],
+                               step=step if attempt == 0
+                               else f"{step} (round {attempt + 1})",
+                               allow_undecided=True)
+            rounds.append({"tx": entry["tx"], "status": entry["status"],
+                           "execution": entry["execution"],
+                           "votes": entry["votes"]})
+            if entry["status"] in ("ACCEPTED", "FINALIZED") and not entry["refused"]:
+                entry["rounds"] = rounds
+                return entry
+            say(f"    the round ended {entry['status']}: it wrote nothing, and "
+                f"the claim is unchanged. Asking again.")
+        raise Failed(f"{step}: {attempts} rounds in a row wrote nothing")
 
     def read(self, method, args=None, final=False):
         """A read, from an account that can do nothing.
@@ -225,7 +250,7 @@ def main() -> int:
     run.write("submitter", "submit_evidence",
               [confirmed, run.fixture("official-status"), "the status page"],
               step="submit official status")
-    run.write("reader", "adjudicate", [confirmed], step="adjudicate confirmed")
+    run.adjudicate(confirmed, "adjudicate confirmed")
     outcome = run.read("get_claim_adjudication", [confirmed])
     say(f"    -> {outcome['verdict']}  policy satisfied "
         f"{outcome['source_policy_satisfied']}  conflict {outcome['conflict_status']}")
@@ -244,7 +269,7 @@ def main() -> int:
     run.write("submitter", "submit_evidence",
               [refuted, run.fixture("hostile-page"), "a status page"],
               step="submit hostile page")
-    run.write("reader", "adjudicate", [refuted], step="adjudicate refuted")
+    run.adjudicate(refuted, "adjudicate refuted")
     outcome = run.read("get_claim_adjudication", [refuted])
     say(f"    -> {outcome['verdict']}")
     check(outcome["verdict"] == "REFUTED",
@@ -265,7 +290,7 @@ def main() -> int:
     run.write("other", "submit_evidence",
               [conflicted, run.fixture("hostile-page"), "another status page"],
               step="submit contradicting source")
-    run.write("reader", "adjudicate", [conflicted], step="adjudicate conflicted")
+    run.adjudicate(conflicted, "adjudicate conflicted")
     outcome = run.read("get_claim_adjudication", [conflicted])
     say(f"    -> {outcome['verdict']}  conflict {outcome['conflict_status']}")
     check(outcome["verdict"] == "CONFLICTED",
@@ -283,7 +308,7 @@ def main() -> int:
     run.write("submitter", "submit_evidence",
               [stale, run.fixture("stale-report"), "earlier coverage"],
               step="submit stale report")
-    run.write("reader", "adjudicate", [stale], step="adjudicate stale")
+    run.adjudicate(stale, "adjudicate stale")
     outcome = run.read("get_claim_adjudication", [stale])
     say(f"    -> {outcome['verdict']}  timely {outcome['timely']} of "
         f"{outcome['evidence_read']}")
@@ -302,7 +327,7 @@ def main() -> int:
     run.write("submitter", "submit_evidence",
               [outside, OUTSIDE_SOURCE, "a page from somewhere else"],
               step="submit a non-official source")
-    run.write("reader", "adjudicate", [outside], step="adjudicate official-only")
+    run.adjudicate(outside, "adjudicate official-only")
     outcome = run.read("get_claim_adjudication", [outside])
     say(f"    -> {outcome['verdict']}  qualifying {outcome['qualifying']} of "
         f"{outcome['evidence_read']} read")
@@ -322,7 +347,7 @@ def main() -> int:
     run.write("submitter", "submit_evidence",
               [gone, f"{RAW}/{pin}/fixtures/no-such-document.txt", "a dead link"],
               step="submit an unreachable source")
-    run.write("reader", "adjudicate", [gone], step="adjudicate unavailable")
+    run.adjudicate(gone, "adjudicate unavailable")
     outcome = run.read("get_claim_adjudication", [gone])
     say(f"    -> {outcome['verdict']}  unreachable {outcome['evidence_unreachable']}")
     check(outcome["verdict"] == "UNAVAILABLE",

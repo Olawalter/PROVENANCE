@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 86" width="420" height="86" role="img" aria-label="PROVENANCE">
+  <rect width="420" height="86" fill="#F7F7F4"/>
+  <!-- five moments on one line: event, publication, observation, adjudication,
+       finality. The filled one is the moment the record was written. -->
+  <line x1="18" y1="43" x2="92" y2="43" stroke="#DCDFDA" stroke-width="1.5"/>
+  <circle cx="18" cy="43" r="4.5" fill="#F7F7F4" stroke="#626863" stroke-width="1.5"/>
+  <circle cx="36.5" cy="43" r="4.5" fill="#F7F7F4" stroke="#626863" stroke-width="1.5"/>
+  <circle cx="55" cy="43" r="4.5" fill="#F7F7F4" stroke="#626863" stroke-width="1.5"/>
+  <circle cx="73.5" cy="43" r="4.5" fill="#176B4D" stroke="#176B4D" stroke-width="1.5"/>
+  <circle cx="92" cy="43" r="4.5" fill="#F7F7F4" stroke="#176B4D" stroke-width="1.5"/>
+  <text x="116" y="50" font-family="Geist Mono, ui-monospace, monospace" font-size="25" letter-spacing="3.4" fill="#111312">PROVENANCE</text>
+  <text x="118" y="68" font-family="Inter, system-ui, sans-serif" font-size="11" letter-spacing="0.4" fill="#626863">Evidence becomes state.</text>
+</svg>
