@@ -147,6 +147,7 @@ that a probe script outside the project can silently load a different one.
 | Suite | What it covers | Command |
 | --- | --- | --- |
 | direct | the contract against a `genlayer` harness where the validator genuinely runs, so leader and validator can read the same page differently | `python -m pytest tests/direct` |
+| integration | reads against the deployment: the chain holds this source, the surface is the one the console was wired against, and the published verdicts are what the contract still answers | `python -m pytest tests/integration` |
 | live | six claims and every refusal on StudioNet, asserted rather than printed | `python scripts/live.py` |
 | console | lint, types and a production build | `npm run lint && npm run typecheck && npm run build` |
 | records | that this README's claims still match the records behind them | `python scripts/check_records.py` |
