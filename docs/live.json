@@ -2,64 +2,22 @@
   "network": "GenLayer StudioNet",
   "chain_id": 61999,
   "rpc": "https://studio.genlayer.com/api",
-  "contract": "0xA911BEbdE97aFa664952587F905Bb4805D2B4EAB",
-  "fixtures_commit": "5560065f58bdcd92809b863568d18aee785a9c0d",
+  "contract": "0xD89796f8842d6734687D81C221E08697004E7f9E",
+  "fixtures_commit": "ca8307a7ab549f4ed659a20e902f34ffabc3535d",
   "fixtures_are_fixtures": "Every evidence URL below is a commit-pinned controlled test fixture in this repository, except the IANA page, which is a real page included because it is genuinely not an official source for this claim. Acme Exchange does not exist.",
-  "started_at": "2026-10-05T21:15:46Z",
+  "started_at": "2026-10-05T22:14:50Z",
   "accounts": {
-    "reader": "0x46d2D24ECf870e669458CA1A02352afF4485f581",
-    "creator": "0x1232dA2d39353Ca1dE8a15087c07f74f7c4032F8",
-    "submitter": "0xC3972F14F9FCB1aC2E3Fd73096f295f483A6a82e",
-    "other": "0x62246321c5C305AD7219cdd2Eb708A7864461C7f"
+    "reader": "0x297694FD09CE91Db573b092317AA67c478B98147",
+    "creator": "0x3a3beA76285508CCa4151180F29d0629FFF87677",
+    "submitter": "0xb7B7d51f951C12F1ba3a035Ce48E11476f1F891a",
+    "other": "0xA8B9394Ce5346eF6e5353D596C53890Db97b4174"
   },
   "transactions": [
     {
       "step": "declare confirmed",
       "method": "declare_claim",
       "caller": "creator",
-      "tx": "0xe00009a8be00a9b5b5a1ce5128cf9cef3dc09443b7ef1f0c5a370a6c451a6b7f",
-      "status": "ACCEPTED",
-      "consensus": "MAJORITY_AGREE",
-      "execution": "SUCCESS",
-      "refused": false,
-      "votes": {
-        "idle": 2,
-        "agree": 3
-      }
-    },
-    {
-      "step": "freeze confirmed",
-      "method": "freeze_claim",
-      "caller": "creator",
-      "tx": "0xbf7b29b152f878533322a5e2aa2c509dfc38c2116c2524fb7a592d70141476af",
-      "status": "ACCEPTED",
-      "consensus": "MAJORITY_AGREE",
-      "execution": "SUCCESS",
-      "refused": false,
-      "votes": {
-        "idle": 2,
-        "agree": 3
-      }
-    },
-    {
-      "step": "submit official status",
-      "method": "submit_evidence",
-      "caller": "submitter",
-      "tx": "0x3c3a29c261d1ac1fc1fe4ebb5f4b0857f948e30ecc386b2f1d083b3bbd2edc73",
-      "status": "ACCEPTED",
-      "consensus": "MAJORITY_AGREE",
-      "execution": "SUCCESS",
-      "refused": false,
-      "votes": {
-        "idle": 2,
-        "agree": 3
-      }
-    },
-    {
-      "step": "adjudicate confirmed",
-      "method": "adjudicate",
-      "caller": "reader",
-      "tx": "0x89996748c4a04074387af5c9bd70903320079eaf467bbcb2af7825f1dbe80a0f",
+      "tx": "0x7893e8fcd154ccb30363aba06393890115abafe9a55a505e61ba572b9b9d5799",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -70,10 +28,62 @@
       }
     },
     {
+      "step": "freeze confirmed",
+      "method": "freeze_claim",
+      "caller": "creator",
+      "tx": "0x8209fece8e1ebc1209eaf733362007000a6f0bf054565b259567c688dbffeaac",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "agree": 5
+      }
+    },
+    {
+      "step": "submit official status",
+      "method": "submit_evidence",
+      "caller": "submitter",
+      "tx": "0x85bfa0a4a9aef49d83b232c06196e388a1ea6119c7d7c1b7cbff5b8e0a40b441",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "agree": 3,
+        "idle": 2
+      }
+    },
+    {
+      "step": "adjudicate confirmed",
+      "method": "adjudicate",
+      "caller": "reader",
+      "tx": "0x95eb6af5fa5283d06af1e16d522919c1bc7b25e4d1da399e33304cd89068379a",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "idle": 2,
+        "agree": 3
+      },
+      "rounds": [
+        {
+          "tx": "0x95eb6af5fa5283d06af1e16d522919c1bc7b25e4d1da399e33304cd89068379a",
+          "status": "ACCEPTED",
+          "execution": "SUCCESS",
+          "votes": {
+            "idle": 2,
+            "agree": 3
+          }
+        }
+      ]
+    },
+    {
       "step": "declare refuted",
       "method": "declare_claim",
       "caller": "creator",
-      "tx": "0x972bd12471bb4394b43d1868a261501c79660e706cc8dd28bc175c9bc3c22ec3",
+      "tx": "0xfeeb69f6a9a5c381652c23fb7d400ea8da7777f87a8d51886b8aaaf859152cad",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -87,21 +97,20 @@
       "step": "freeze refuted",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0x934699b8cc5f899499a8598c3a299f831d5d66f62e9f105546b7a2713b201cc0",
+      "tx": "0xdaffc9509b2ad198fc6cb7649cae4fb2e1ffad0bd205d8063cbc94f8bbbc2512",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "agree": 3,
-        "idle": 2
+        "agree": 5
       }
     },
     {
       "step": "submit hostile page",
       "method": "submit_evidence",
       "caller": "submitter",
-      "tx": "0xbbb1fdeeba916cc4c52457bd186191e52d0c13804be55103c43cb802848d44b2",
+      "tx": "0x91d49aede27d3cadb8f225920f6e9536d7a19ed8f71ae5212c801eaaab21df99",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -115,21 +124,55 @@
       "step": "adjudicate refuted",
       "method": "adjudicate",
       "caller": "reader",
-      "tx": "0xeee26a205fb4daf1762182960a7b10965fa95ee458d94f679cad8ae45eaf3f01",
+      "tx": "0x8d5264c90ba84adf70e8dbafd38325301926ebe75dd68a2aec1bbc0be09b8973",
+      "status": "UNDETERMINED",
+      "consensus": "MAJORITY_DISAGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "agree": 2,
+        "disagree": 3
+      }
+    },
+    {
+      "step": "adjudicate refuted (round 2)",
+      "method": "adjudicate",
+      "caller": "reader",
+      "tx": "0xfc4aa86c9079bcd238b347cde99a6872fd9e6a6ba24cfe262381c3d3f1d0e8d8",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
         "agree": 3,
-        "idle": 2
-      }
+        "disagree": 2
+      },
+      "rounds": [
+        {
+          "tx": "0x8d5264c90ba84adf70e8dbafd38325301926ebe75dd68a2aec1bbc0be09b8973",
+          "status": "UNDETERMINED",
+          "execution": "SUCCESS",
+          "votes": {
+            "agree": 2,
+            "disagree": 3
+          }
+        },
+        {
+          "tx": "0xfc4aa86c9079bcd238b347cde99a6872fd9e6a6ba24cfe262381c3d3f1d0e8d8",
+          "status": "ACCEPTED",
+          "execution": "SUCCESS",
+          "votes": {
+            "agree": 3,
+            "disagree": 2
+          }
+        }
+      ]
     },
     {
       "step": "declare conflicted",
       "method": "declare_claim",
       "caller": "creator",
-      "tx": "0x7aeaaf7fb47ab4205be469dbf32d2a1ebc1419a76205188c4d831bcc588b4106",
+      "tx": "0xf8d60bcd628fbb1e6fcbe956814cea128b9f67b152469fe30cd4ed9c73e56aa7",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -143,7 +186,7 @@
       "step": "freeze conflicted",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0x01ed6eef2e22b83ccd3d2badab767d82dfb406199c0611e6e793a1696ed35821",
+      "tx": "0x5572b05e82a5664226a0fb4a0ae056ddc8bd66fd71eb991c2aaf2f343024d4ae",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -156,78 +199,133 @@
       "step": "submit supporting source",
       "method": "submit_evidence",
       "caller": "submitter",
-      "tx": "0xb6a6da5966f1a4e6eceda94d2498e2c82a7d39fe2aef8041cd695e4ad9e9ae86",
+      "tx": "0x539797bda0f0dd5f0d2be533b4a9fc2a00a79571e9cba926fc0d129ce3117c48",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "agree": 3,
-        "idle": 2
+        "agree": 5
       }
     },
     {
       "step": "submit contradicting source",
       "method": "submit_evidence",
       "caller": "other",
-      "tx": "0xef617e564fc15c2a29912fb67a5b9573b5e62b4964329dc6e1ec13f4ed904595",
+      "tx": "0x422a81719bd075be6818d3959dbea1e6e6b99a60f9043de324a45d3c73347930",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 3,
+        "idle": 2
       }
     },
     {
       "step": "adjudicate conflicted",
       "method": "adjudicate",
       "caller": "reader",
-      "tx": "0xa4e990e1169a71eab33745cfbb677bee7b7aea5e7990cc771dc28b622daa9925",
+      "tx": "0x38be47ade0c46bf51f6bd7926f88c45505747fc381fcf46566a5a237b3c30eea",
+      "status": "UNDETERMINED",
+      "consensus": "MAJORITY_DISAGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "disagree": 3,
+        "idle": 2
+      }
+    },
+    {
+      "step": "adjudicate conflicted (round 2)",
+      "method": "adjudicate",
+      "caller": "reader",
+      "tx": "0x1c51b439b22517a392631c1b98124956440be0c3e1f0c2e3e1a30eb1045d226c",
+      "status": "UNDETERMINED",
+      "consensus": "MAJORITY_DISAGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "agree": 1,
+        "disagree": 3,
+        "idle": 1
+      }
+    },
+    {
+      "step": "adjudicate conflicted (round 3)",
+      "method": "adjudicate",
+      "caller": "reader",
+      "tx": "0xf9bcbbcd6424f7b3fb692ac504922d433be13c2b779de8661debe681511522f0",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "disagree": 1,
-        "agree": 3,
-        "idle": 1
-      }
+        "disagree": 2,
+        "agree": 3
+      },
+      "rounds": [
+        {
+          "tx": "0x38be47ade0c46bf51f6bd7926f88c45505747fc381fcf46566a5a237b3c30eea",
+          "status": "UNDETERMINED",
+          "execution": "SUCCESS",
+          "votes": {
+            "disagree": 3,
+            "idle": 2
+          }
+        },
+        {
+          "tx": "0x1c51b439b22517a392631c1b98124956440be0c3e1f0c2e3e1a30eb1045d226c",
+          "status": "UNDETERMINED",
+          "execution": "SUCCESS",
+          "votes": {
+            "agree": 1,
+            "disagree": 3,
+            "idle": 1
+          }
+        },
+        {
+          "tx": "0xf9bcbbcd6424f7b3fb692ac504922d433be13c2b779de8661debe681511522f0",
+          "status": "ACCEPTED",
+          "execution": "SUCCESS",
+          "votes": {
+            "disagree": 2,
+            "agree": 3
+          }
+        }
+      ]
     },
     {
       "step": "declare stale",
       "method": "declare_claim",
       "caller": "creator",
-      "tx": "0x85a31cad2714be9bad7ac1cedda8f755772454dd439da646aac7c69c9b33fd9f",
+      "tx": "0x0f8004f8d6a5e0bc1a70a85516b35cfd93927ffbaacb909f71e95436d7ca0492",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "agree": 3,
-        "idle": 2
+        "agree": 5
       }
     },
     {
       "step": "freeze stale",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0xd489d92e2a45cbc195628e348d051cefa3ba3b0a2a0c83751ec6485713f36e90",
+      "tx": "0x1edcb2771ed6791a160cdc8ebb603ba62dfd684fce8072d994ebe5fb855574df",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "agree": 3,
-        "idle": 2
+        "agree": 5
       }
     },
     {
       "step": "submit stale report",
       "method": "submit_evidence",
       "caller": "submitter",
-      "tx": "0x5a60f287e58f3f40ef78be073661c3ae7f5bacc14c6447359825d6b5a909515a",
+      "tx": "0x3514dc793aa2f2fc43d79b9824dd79fb53d6f14a6cde740d39018fc5a3d333f3",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -241,7 +339,32 @@
       "step": "adjudicate stale",
       "method": "adjudicate",
       "caller": "reader",
-      "tx": "0x4d22c08d91c3bc81ab074e6acd90492afab36d681b92209517b3d216a74112d4",
+      "tx": "0x223cdbd33eb6f2d9e91e287c6e247bbd43e4b7cf31c93f12b2cc3d51ed8c717e",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "agree": 3,
+        "idle": 2
+      },
+      "rounds": [
+        {
+          "tx": "0x223cdbd33eb6f2d9e91e287c6e247bbd43e4b7cf31c93f12b2cc3d51ed8c717e",
+          "status": "ACCEPTED",
+          "execution": "SUCCESS",
+          "votes": {
+            "agree": 3,
+            "idle": 2
+          }
+        }
+      ]
+    },
+    {
+      "step": "declare outside",
+      "method": "declare_claim",
+      "caller": "creator",
+      "tx": "0x03bcef4a2ff79328d637cc5c87163f8acfe72e38044105bf5b2af908a1b43278",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -249,41 +372,13 @@
       "votes": {
         "idle": 2,
         "agree": 3
-      }
-    },
-    {
-      "step": "declare outside",
-      "method": "declare_claim",
-      "caller": "creator",
-      "tx": "0x2eb213cb9e8f5baddb0d6e6c1ca19c4ad7b894f79b618afd3a10a19070ecbbdb",
-      "status": "ACCEPTED",
-      "consensus": "MAJORITY_AGREE",
-      "execution": "SUCCESS",
-      "refused": false,
-      "votes": {
-        "agree": 4,
-        "idle": 1
       }
     },
     {
       "step": "freeze official-only",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0xaa639264221a7dda510d25f76a49045c13aafd7d21f43079018924e57faba7a1",
-      "status": "ACCEPTED",
-      "consensus": "MAJORITY_AGREE",
-      "execution": "SUCCESS",
-      "refused": false,
-      "votes": {
-        "agree": 3,
-        "idle": 2
-      }
-    },
-    {
-      "step": "submit a non-official source",
-      "method": "submit_evidence",
-      "caller": "submitter",
-      "tx": "0xaea96ad2685dcae78656dd1ff7885277864f0a030f5f6c4f9cffbd3deecce094",
+      "tx": "0x5cbd7333e6cd4ba7ca1e77e5ed15486ca8fca2a3ae164339ca985d9f8a83ee89",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -294,10 +389,10 @@
       }
     },
     {
-      "step": "adjudicate official-only",
-      "method": "adjudicate",
-      "caller": "reader",
-      "tx": "0xdc9ba9d9576389eddd1a541d01bafdb84430d9453d3fe41d6b6b1203282cb192",
+      "step": "submit a non-official source",
+      "method": "submit_evidence",
+      "caller": "submitter",
+      "tx": "0xcd4625566b3b32b67f410c3cfb57f247407f5fe991908da04788d2c4d319082a",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -308,10 +403,35 @@
       }
     },
     {
+      "step": "adjudicate official-only",
+      "method": "adjudicate",
+      "caller": "reader",
+      "tx": "0xb15484ca44feb2b3b4d6c0fbcab0cca1c336df878e9361290313887b6d47aab9",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "refused": false,
+      "votes": {
+        "agree": 3,
+        "idle": 2
+      },
+      "rounds": [
+        {
+          "tx": "0xb15484ca44feb2b3b4d6c0fbcab0cca1c336df878e9361290313887b6d47aab9",
+          "status": "ACCEPTED",
+          "execution": "SUCCESS",
+          "votes": {
+            "agree": 3,
+            "idle": 2
+          }
+        }
+      ]
+    },
+    {
       "step": "declare gone",
       "method": "declare_claim",
       "caller": "creator",
-      "tx": "0x176fa75cd3d2ccf93deed51425be0b2fa27eb444721c54f464bdf88d0905d6a0",
+      "tx": "0xc9b7f502e335de106693566a6443799245f1416979e03a3c6b23ce4ad84c6ad6",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -325,21 +445,21 @@
       "step": "freeze gone",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0x8ef532420df3b2090e659e30382ae70a5112c308408121a873bc97ccc2552925",
+      "tx": "0xb1b9b5cae1c21bd6e74a8d5116322f41d4f5a3090d60f39bb8f002b3008c0e58",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "agree": 4,
-        "idle": 1
+        "idle": 2,
+        "agree": 3
       }
     },
     {
       "step": "submit an unreachable source",
       "method": "submit_evidence",
       "caller": "submitter",
-      "tx": "0xbe0c4e1a59448b7418034f651171943b0cc9a1f8e90f17a6fa1e4446cc31ee8f",
+      "tx": "0x9200d293fb0a3b7fc515f5686d3371a3ac588aeda8d558c1e38165cc5f930fa8",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -353,7 +473,7 @@
       "step": "adjudicate unavailable",
       "method": "adjudicate",
       "caller": "reader",
-      "tx": "0xfb8f159f37645a0694d97eff288ebf304349a9441bb18e269aff22a5535e93ad",
+      "tx": "0xa25f1641d551b7c37cfd0cb7ac8ce3743205604a4f7a26e3138afe3b6de16e1a",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -361,34 +481,45 @@
       "votes": {
         "agree": 3,
         "idle": 2
-      }
+      },
+      "rounds": [
+        {
+          "tx": "0xa25f1641d551b7c37cfd0cb7ac8ce3743205604a4f7a26e3138afe3b6de16e1a",
+          "status": "ACCEPTED",
+          "execution": "SUCCESS",
+          "votes": {
+            "agree": 3,
+            "idle": 2
+          }
+        }
+      ]
     },
     {
       "step": "declare draft",
       "method": "declare_claim",
       "caller": "creator",
-      "tx": "0x7e28f2f36fa410e2f23dcac766a7a5d698295f6becb19b58e20e0956427d2e74",
+      "tx": "0x9aefa8244a1501a9d332829449231963afe2085431e73aef5c0c6d693b306cfd",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "agree": 3,
-        "idle": 2
+        "idle": 2,
+        "agree": 3
       }
     },
     {
       "step": "a stranger freezes a claim",
       "method": "freeze_claim",
       "caller": "other",
-      "tx": "0x1985c95204d153516c304b2ac5f7400dd2b8dba67385272ddcaac87395091d5d",
+      "tx": "0xef5482cd70dcd5428ee623a1e2c9904d1a492bc3a2ef2d7d277166b152d8558f",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 3,
+        "idle": 2
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] only the account that declared this claim can do that\"}"
     },
@@ -396,14 +527,14 @@
       "step": "evidence before freezing",
       "method": "submit_evidence",
       "caller": "submitter",
-      "tx": "0x423232cc045f68ea407041e158414370c9125ed7035d31c17d936a72a0b530fa",
+      "tx": "0xf7c98d625cf3c70ad32737a381df210ff99f5d280e89dcaef4c1289f74845865",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 3,
+        "idle": 2
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] this claim is not frozen yet\"}"
     },
@@ -411,7 +542,7 @@
       "step": "adjudicate an unfrozen claim",
       "method": "adjudicate",
       "caller": "reader",
-      "tx": "0x2af8a7533c3e4641ecef96e88b2492e3fbd4397be3eeddf317d2c5dae8c07873",
+      "tx": "0xc26f8950f1393d68d35b10c365b98026769d53eae0e2007a9f874bab5f1103ca",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
@@ -426,28 +557,27 @@
       "step": "freeze it properly",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0xe258dfbfd0a9261a22661c0a92f788668513256099960396e60395ffa2861dea",
+      "tx": "0x62444644e25d6e3656c1d038f7d30fa81dc149fbe83363f6b7fcf70b22a4ad93",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
       "refused": false,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 3,
+        "idle": 2
       }
     },
     {
       "step": "change the policy after freezing",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0x8b0075804536d8b5bda6ffdc7bcaf23a502eb7cde097c50ccdd2d938c106c854",
+      "tx": "0x0d2cf626042cd4c57a72d123edc89dd68d87ca932a2ab5ebd228cf6db6dc7624",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 5
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] this claim is already frozen; declare a new one to change it\"}"
     },
@@ -455,7 +585,7 @@
       "step": "submit a source",
       "method": "submit_evidence",
       "caller": "submitter",
-      "tx": "0x86b0bb819405bc823fc82a1d57ba29b1d650f02764712c59adf649200589798e",
+      "tx": "0x929a2927c0060b0ea3c6a6e2368ef540b7663ac00325db5ae82bf97c649256b2",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "SUCCESS",
@@ -469,7 +599,22 @@
       "step": "submit the same source twice",
       "method": "submit_evidence",
       "caller": "other",
-      "tx": "0xb9735d227ad29b1b25077e9e100b0e8a559b60b2d32c16c8b263963b41355d6c",
+      "tx": "0x13f5f992ae9b504c90fb03d2a0bf315b7b705fec6ccaac5bc1b12b2aeb7a1b4c",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": "ERROR",
+      "refused": true,
+      "votes": {
+        "agree": 4,
+        "idle": 1
+      },
+      "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] this source is already evidence on this claim\"}"
+    },
+    {
+      "step": "cancel a claim that has evidence",
+      "method": "cancel_claim",
+      "caller": "creator",
+      "tx": "0x421600453899c257cb60ba2449ecf084eb9743dfa15e48532a3a3acc5ab9096d",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
@@ -478,35 +623,20 @@
         "idle": 2,
         "agree": 3
       },
-      "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] this source is already evidence on this claim\"}"
-    },
-    {
-      "step": "cancel a claim that has evidence",
-      "method": "cancel_claim",
-      "caller": "creator",
-      "tx": "0xac81e5f6a7664762cc9b26ba85f5b42011bf07d2dcba95372cdf6a80a511de89",
-      "status": "ACCEPTED",
-      "consensus": "MAJORITY_AGREE",
-      "execution": "ERROR",
-      "refused": true,
-      "votes": {
-        "agree": 3,
-        "idle": 2
-      },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] evidence has been submitted; this claim cannot be cancelled\"}"
     }
   ],
   "claims": {
     "confirmed": {
-      "claim_id": "C-00001",
+      "claim_id": "C-00005",
       "expected": "CONFIRMED",
       "adjudication": {
-        "adjudicated_at": "2026-10-05T21:16:42Z",
-        "adjudication_id": "A-00001",
-        "claim_id": "C-00001",
+        "adjudicated_at": "2026-10-05T22:15:42Z",
+        "adjudication_id": "A-00004",
+        "claim_id": "C-00005",
         "conflict_status": "NONE",
         "contradicting": 0,
-        "decisive_digest": "[{\"event_before_relevant\":true,\"evidence_id\":\"E-00001\",\"position\":\"SUPPORTS\",\"published_in_window\":true,\"reachable\":true,\"source_class\":\"PRIMARY\"}]",
+        "decisive_digest": "c3c6b189378b725d7191ef0f7eeb8e33e6334e28ca01b62396c36db4c9012db6",
         "evidence_read": 1,
         "evidence_sufficiency": "1 of 1",
         "evidence_unreachable": 0,
@@ -515,18 +645,18 @@
         "readings": [
           {
             "event_time": "2026-09-28T13:42:00Z",
-            "evidence_id": "E-00001",
-            "note": "The document states that withdrawals resumed at a specific time before 14:00 UTC on the claimed date.",
+            "evidence_id": "E-00006",
+            "note": "The document states that withdrawals resumed at 13:42 UTC on 28 September 2026, which is before 14:00 UTC that day.",
             "position": "SUPPORTS",
             "publication_time": "2026-09-28T13:44:00Z",
-            "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026",
+            "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026 for all verified accounts.",
             "reachable": true,
             "source_class": "PRIMARY"
           }
         ],
         "result": "CONFIRMED",
         "roles": {
-          "E-00001": "DECISIVE"
+          "E-00006": "DECISIVE"
         },
         "rules": "provenance-adjudication-1",
         "schema": 1,
@@ -540,36 +670,36 @@
       "evidence": [
         {
           "authority": "OFFICIAL",
-          "claim_id": "C-00001",
+          "claim_id": "C-00005",
           "context": "the status page",
           "event_time": "2026-09-28T13:42:00Z",
-          "evidence_id": "E-00001",
+          "evidence_id": "E-00006",
           "http_status": 200,
-          "note": "The document states that withdrawals resumed at a specific time before 14:00 UTC on the claimed date.",
-          "observation_time": "2026-10-05T21:16:42Z",
+          "note": "The document states that withdrawals resumed at 13:42 UTC on 28 September 2026, which is before 14:00 UTC that day.",
+          "observation_time": "2026-10-05T22:15:42Z",
           "position": "SUPPORTS",
           "publication_time": "2026-09-28T13:44:00Z",
-          "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026",
+          "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026 for all verified accounts.",
           "role": "DECISIVE",
           "source_class": "PRIMARY",
           "source_host": "raw.githubusercontent.com",
-          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/5560065f58bdcd92809b863568d18aee785a9c0d/fixtures/official-status.txt",
+          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/ca8307a7ab549f4ed659a20e902f34ffabc3535d/fixtures/official-status.txt",
           "status": "READ",
-          "submitted_at": "2026-10-05T21:16:26Z",
-          "submitted_by": "0xC3972F14F9FCB1aC2E3Fd73096f295f483A6a82e"
+          "submitted_at": "2026-10-05T22:15:33Z",
+          "submitted_by": "0xb7B7d51f951C12F1ba3a035Ce48E11476f1F891a"
         }
       ]
     },
     "refuted": {
-      "claim_id": "C-00002",
+      "claim_id": "C-00006",
       "expected": "REFUTED",
       "adjudication": {
-        "adjudicated_at": "2026-10-05T21:17:56Z",
-        "adjudication_id": "A-00002",
-        "claim_id": "C-00002",
+        "adjudicated_at": "2026-10-05T22:20:04Z",
+        "adjudication_id": "A-00005",
+        "claim_id": "C-00006",
         "conflict_status": "NONE",
         "contradicting": 1,
-        "decisive_digest": "[{\"event_before_relevant\":null,\"evidence_id\":\"E-00002\",\"position\":\"CONTRADICTS\",\"published_in_window\":true,\"reachable\":true,\"source_class\":\"PRIMARY\"}]",
+        "decisive_digest": "207fb9b00c197e47e2b61ca33f48411a2217073da2d0a7887e8b0704b02d7856",
         "evidence_read": 1,
         "evidence_sufficiency": "1 of 1",
         "evidence_unreachable": 0,
@@ -577,19 +707,19 @@
         "qualifying": 1,
         "readings": [
           {
-            "event_time": "",
-            "evidence_id": "E-00002",
-            "note": "The document explicitly states withdrawals did not resume on 28 September 2026, which directly opposes the claim that they resumed before 14:00 UTC that day.",
+            "event_time": "2026-09-28T14:00:00Z",
+            "evidence_id": "E-00007",
+            "note": "The document explicitly states that withdrawals remained suspended and did not resume on the date specified in the claim.",
             "position": "CONTRADICTS",
             "publication_time": "2026-09-28T15:00:00Z",
-            "quote": "Withdrawals remain suspended and did not resume",
+            "quote": "Withdrawals remain suspended and did not resume on 28 September 2026.",
             "reachable": true,
             "source_class": "PRIMARY"
           }
         ],
         "result": "REFUTED",
         "roles": {
-          "E-00002": "CONTRADICTORY"
+          "E-00007": "CONTRADICTORY"
         },
         "rules": "provenance-adjudication-1",
         "schema": 1,
@@ -603,36 +733,36 @@
       "evidence": [
         {
           "authority": "OFFICIAL",
-          "claim_id": "C-00002",
+          "claim_id": "C-00006",
           "context": "a status page",
-          "event_time": "",
-          "evidence_id": "E-00002",
+          "event_time": "2026-09-28T14:00:00Z",
+          "evidence_id": "E-00007",
           "http_status": 200,
-          "note": "The document explicitly states withdrawals did not resume on 28 September 2026, which directly opposes the claim that they resumed before 14:00 UTC that day.",
-          "observation_time": "2026-10-05T21:17:56Z",
+          "note": "The document explicitly states that withdrawals remained suspended and did not resume on the date specified in the claim.",
+          "observation_time": "2026-10-05T22:20:04Z",
           "position": "CONTRADICTS",
           "publication_time": "2026-09-28T15:00:00Z",
-          "quote": "Withdrawals remain suspended and did not resume",
+          "quote": "Withdrawals remain suspended and did not resume on 28 September 2026.",
           "role": "CONTRADICTORY",
           "source_class": "PRIMARY",
           "source_host": "raw.githubusercontent.com",
-          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/5560065f58bdcd92809b863568d18aee785a9c0d/fixtures/hostile-page.txt",
+          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/ca8307a7ab549f4ed659a20e902f34ffabc3535d/fixtures/hostile-page.txt",
           "status": "READ",
-          "submitted_at": "2026-10-05T21:17:42Z",
-          "submitted_by": "0xC3972F14F9FCB1aC2E3Fd73096f295f483A6a82e"
+          "submitted_at": "2026-10-05T22:16:49Z",
+          "submitted_by": "0xb7B7d51f951C12F1ba3a035Ce48E11476f1F891a"
         }
       ]
     },
     "conflicted": {
-      "claim_id": "C-00003",
+      "claim_id": "C-00007",
       "expected": "CONFLICTED",
       "adjudication": {
-        "adjudicated_at": "2026-10-05T21:19:38Z",
-        "adjudication_id": "A-00003",
-        "claim_id": "C-00003",
+        "adjudicated_at": "2026-10-05T22:26:33Z",
+        "adjudication_id": "A-00006",
+        "claim_id": "C-00007",
         "conflict_status": "MATERIAL_CONFLICT",
         "contradicting": 1,
-        "decisive_digest": "[{\"event_before_relevant\":true,\"evidence_id\":\"E-00003\",\"position\":\"SUPPORTS\",\"published_in_window\":true,\"reachable\":true,\"source_class\":\"PRIMARY\"},{\"event_before_relevant\":false,\"evidence_id\":\"E-00004\",\"position\":\"CONTRADICTS\",\"published_in_window\":true,\"reachable\":true,\"source_class\":\"PRIMARY\"}]",
+        "decisive_digest": "3100b26d32e7d5e35f54a00ea84b6df53dd84d3a9a82744207e18cae15452170",
         "evidence_read": 2,
         "evidence_sufficiency": "2 of 2",
         "evidence_unreachable": 0,
@@ -641,18 +771,18 @@
         "readings": [
           {
             "event_time": "2026-09-28T13:42:00Z",
-            "evidence_id": "E-00003",
-            "note": "The document explicitly states that withdrawals resumed at 13:42 UTC, which is before the 14:00 UTC deadline specified in the claim.",
+            "evidence_id": "E-00008",
+            "note": "The document states withdrawals resumed at 13:42 UTC on 28 September 2026, which is before 14:00 UTC as asserted in the claim.",
             "position": "SUPPORTS",
             "publication_time": "2026-09-28T13:44:00Z",
-            "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026",
+            "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026 for all",
             "reachable": true,
             "source_class": "PRIMARY"
           },
           {
-            "event_time": "2026-09-28T15:00:00Z",
-            "evidence_id": "E-00004",
-            "note": "The document explicitly states that withdrawals remained suspended and did not resume on the date mentioned in the claim.",
+            "event_time": "",
+            "evidence_id": "E-00009",
+            "note": "The Acme Exchange service status page explicitly states withdrawals did not resume on 28 September 2026, directly contradicting the claim that they resumed before 14:00 UTC that day.",
             "position": "CONTRADICTS",
             "publication_time": "2026-09-28T15:00:00Z",
             "quote": "Withdrawals remain suspended and did not resume on 28 September 2026.",
@@ -662,8 +792,8 @@
         ],
         "result": "CONFLICTED",
         "roles": {
-          "E-00003": "CORROBORATING",
-          "E-00004": "CONTRADICTORY"
+          "E-00008": "CORROBORATING",
+          "E-00009": "CONTRADICTORY"
         },
         "rules": "provenance-adjudication-1",
         "schema": 1,
@@ -677,56 +807,56 @@
       "evidence": [
         {
           "authority": "OFFICIAL",
-          "claim_id": "C-00003",
+          "claim_id": "C-00007",
           "context": "the status page",
           "event_time": "2026-09-28T13:42:00Z",
-          "evidence_id": "E-00003",
+          "evidence_id": "E-00008",
           "http_status": 200,
-          "note": "The document explicitly states that withdrawals resumed at 13:42 UTC, which is before the 14:00 UTC deadline specified in the claim.",
-          "observation_time": "2026-10-05T21:19:38Z",
+          "note": "The document states withdrawals resumed at 13:42 UTC on 28 September 2026, which is before 14:00 UTC as asserted in the claim.",
+          "observation_time": "2026-10-05T22:26:33Z",
           "position": "SUPPORTS",
           "publication_time": "2026-09-28T13:44:00Z",
-          "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026",
+          "quote": "Withdrawals resumed at 13:42 UTC on 28 September 2026 for all",
           "role": "CORROBORATING",
           "source_class": "PRIMARY",
           "source_host": "raw.githubusercontent.com",
-          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/5560065f58bdcd92809b863568d18aee785a9c0d/fixtures/official-status.txt",
+          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/ca8307a7ab549f4ed659a20e902f34ffabc3535d/fixtures/official-status.txt",
           "status": "READ",
-          "submitted_at": "2026-10-05T21:19:19Z",
-          "submitted_by": "0xC3972F14F9FCB1aC2E3Fd73096f295f483A6a82e"
+          "submitted_at": "2026-10-05T22:21:49Z",
+          "submitted_by": "0xb7B7d51f951C12F1ba3a035Ce48E11476f1F891a"
         },
         {
           "authority": "OFFICIAL",
-          "claim_id": "C-00003",
+          "claim_id": "C-00007",
           "context": "another status page",
-          "event_time": "2026-09-28T15:00:00Z",
-          "evidence_id": "E-00004",
+          "event_time": "",
+          "evidence_id": "E-00009",
           "http_status": 200,
-          "note": "The document explicitly states that withdrawals remained suspended and did not resume on the date mentioned in the claim.",
-          "observation_time": "2026-10-05T21:19:38Z",
+          "note": "The Acme Exchange service status page explicitly states withdrawals did not resume on 28 September 2026, directly contradicting the claim that they resumed before 14:00 UTC that day.",
+          "observation_time": "2026-10-05T22:26:33Z",
           "position": "CONTRADICTS",
           "publication_time": "2026-09-28T15:00:00Z",
           "quote": "Withdrawals remain suspended and did not resume on 28 September 2026.",
           "role": "CONTRADICTORY",
           "source_class": "PRIMARY",
           "source_host": "raw.githubusercontent.com",
-          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/5560065f58bdcd92809b863568d18aee785a9c0d/fixtures/hostile-page.txt",
+          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/ca8307a7ab549f4ed659a20e902f34ffabc3535d/fixtures/hostile-page.txt",
           "status": "READ",
-          "submitted_at": "2026-10-05T21:19:28Z",
-          "submitted_by": "0x62246321c5C305AD7219cdd2Eb708A7864461C7f"
+          "submitted_at": "2026-10-05T22:21:57Z",
+          "submitted_by": "0xA8B9394Ce5346eF6e5353D596C53890Db97b4174"
         }
       ]
     },
     "stale": {
-      "claim_id": "C-00004",
+      "claim_id": "C-00008",
       "expected": "INSUFFICIENT",
       "adjudication": {
-        "adjudicated_at": "2026-10-05T21:21:51Z",
-        "adjudication_id": "A-00004",
-        "claim_id": "C-00004",
+        "adjudicated_at": "2026-10-05T22:28:27Z",
+        "adjudication_id": "A-00007",
+        "claim_id": "C-00008",
         "conflict_status": "NONE",
         "contradicting": 0,
-        "decisive_digest": "[{\"event_before_relevant\":true,\"evidence_id\":\"E-00005\",\"position\":\"SILENT\",\"published_in_window\":false,\"reachable\":true,\"source_class\":\"SECONDARY\"}]",
+        "decisive_digest": "7096c155bea8308a1f83acffb12437c18666ad5939e6cb235d22e229bcb9dbc2",
         "evidence_read": 1,
         "evidence_sufficiency": "0 of 1",
         "evidence_unreachable": 0,
@@ -735,8 +865,8 @@
         "readings": [
           {
             "event_time": "2026-09-26T00:00:00Z",
-            "evidence_id": "E-00005",
-            "note": "The document says withdrawals were halted on 26 September 2026 and gives no timetable for their return, but it does not state whether withdrawals had resumed before 14:00 UTC on 28 September 2026.",
+            "evidence_id": "E-00010",
+            "note": "The document reports that Acme Exchange halted withdrawals on 26 September 2026 and gave no timetable for their return, but it does not say whether withdrawals had resumed before 14:00 UTC on 28 September 2026.",
             "position": "SILENT",
             "publication_time": "2026-09-26T09:30:00Z",
             "quote": "",
@@ -746,7 +876,7 @@
         ],
         "result": "INSUFFICIENT_EVIDENCE",
         "roles": {
-          "E-00005": "DISREGARDED"
+          "E-00010": "DISREGARDED"
         },
         "rules": "provenance-adjudication-1",
         "schema": 1,
@@ -760,36 +890,36 @@
       "evidence": [
         {
           "authority": "OFFICIAL",
-          "claim_id": "C-00004",
+          "claim_id": "C-00008",
           "context": "earlier coverage",
           "event_time": "2026-09-26T00:00:00Z",
-          "evidence_id": "E-00005",
+          "evidence_id": "E-00010",
           "http_status": 200,
-          "note": "The document says withdrawals were halted on 26 September 2026 and gives no timetable for their return, but it does not state whether withdrawals had resumed before 14:00 UTC on 28 September 2026.",
-          "observation_time": "2026-10-05T21:21:51Z",
+          "note": "The document reports that Acme Exchange halted withdrawals on 26 September 2026 and gave no timetable for their return, but it does not say whether withdrawals had resumed before 14:00 UTC on 28 September 2026.",
+          "observation_time": "2026-10-05T22:28:27Z",
           "position": "SILENT",
           "publication_time": "2026-09-26T09:30:00Z",
           "quote": "",
           "role": "DISREGARDED",
           "source_class": "SECONDARY",
           "source_host": "raw.githubusercontent.com",
-          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/5560065f58bdcd92809b863568d18aee785a9c0d/fixtures/stale-report.txt",
+          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/ca8307a7ab549f4ed659a20e902f34ffabc3535d/fixtures/stale-report.txt",
           "status": "READ",
-          "submitted_at": "2026-10-05T21:21:41Z",
-          "submitted_by": "0xC3972F14F9FCB1aC2E3Fd73096f295f483A6a82e"
+          "submitted_at": "2026-10-05T22:28:17Z",
+          "submitted_by": "0xb7B7d51f951C12F1ba3a035Ce48E11476f1F891a"
         }
       ]
     },
     "outside": {
-      "claim_id": "C-00005",
+      "claim_id": "C-00009",
       "expected": "INSUFFICIENT",
       "adjudication": {
-        "adjudicated_at": "2026-10-05T21:22:56Z",
-        "adjudication_id": "A-00005",
-        "claim_id": "C-00005",
+        "adjudicated_at": "2026-10-05T22:29:35Z",
+        "adjudication_id": "A-00008",
+        "claim_id": "C-00009",
         "conflict_status": "NONE",
         "contradicting": 0,
-        "decisive_digest": "[{\"event_before_relevant\":null,\"evidence_id\":\"E-00006\",\"position\":\"SILENT\",\"published_in_window\":null,\"reachable\":true,\"source_class\":\"UNKNOWN\"}]",
+        "decisive_digest": "5a1f0088bd9ecc6f8dab8bc9b434138f89967aaa5ac3e241b3433d5ab1df773c",
         "evidence_read": 1,
         "evidence_sufficiency": "0 of 1",
         "evidence_unreachable": 0,
@@ -798,8 +928,8 @@
         "readings": [
           {
             "event_time": "",
-            "evidence_id": "E-00006",
-            "note": "The document concerns IANA example domains and contains no information about Acme Exchange or cryptocurrency withdrawals.",
+            "evidence_id": "E-00011",
+            "note": "The document is about IANA-managed example domains and contains no information about Acme Exchange or cryptocurrency withdrawals.",
             "position": "SILENT",
             "publication_time": "",
             "quote": "",
@@ -809,7 +939,7 @@
         ],
         "result": "INSUFFICIENT_EVIDENCE",
         "roles": {
-          "E-00006": "DISREGARDED"
+          "E-00011": "DISREGARDED"
         },
         "rules": "provenance-adjudication-1",
         "schema": 1,
@@ -823,13 +953,13 @@
       "evidence": [
         {
           "authority": "OTHER",
-          "claim_id": "C-00005",
+          "claim_id": "C-00009",
           "context": "a page from somewhere else",
           "event_time": "",
-          "evidence_id": "E-00006",
+          "evidence_id": "E-00011",
           "http_status": 200,
-          "note": "The document concerns IANA example domains and contains no information about Acme Exchange or cryptocurrency withdrawals.",
-          "observation_time": "2026-10-05T21:22:56Z",
+          "note": "The document is about IANA-managed example domains and contains no information about Acme Exchange or cryptocurrency withdrawals.",
+          "observation_time": "2026-10-05T22:29:35Z",
           "position": "SILENT",
           "publication_time": "",
           "quote": "",
@@ -838,21 +968,21 @@
           "source_host": "iana.org",
           "source_url": "https://www.iana.org/help/example-domains",
           "status": "READ",
-          "submitted_at": "2026-10-05T21:22:47Z",
-          "submitted_by": "0xC3972F14F9FCB1aC2E3Fd73096f295f483A6a82e"
+          "submitted_at": "2026-10-05T22:29:25Z",
+          "submitted_by": "0xb7B7d51f951C12F1ba3a035Ce48E11476f1F891a"
         }
       ]
     },
     "gone": {
-      "claim_id": "C-00006",
+      "claim_id": "C-00010",
       "expected": "UNAVAILABLE",
       "adjudication": {
-        "adjudicated_at": "2026-10-05T21:24:10Z",
-        "adjudication_id": "A-00006",
-        "claim_id": "C-00006",
+        "adjudicated_at": "2026-10-05T22:30:40Z",
+        "adjudication_id": "A-00009",
+        "claim_id": "C-00010",
         "conflict_status": "NONE",
         "contradicting": 0,
-        "decisive_digest": "[{\"event_before_relevant\":null,\"evidence_id\":\"E-00007\",\"position\":\"SILENT\",\"published_in_window\":null,\"reachable\":false,\"source_class\":\"UNKNOWN\"}]",
+        "decisive_digest": "9d7e439b6a7199595152df490ec7ac241a06ccfd9f76219c72ffadc3090c7d71",
         "evidence_read": 0,
         "evidence_sufficiency": "0 of 1",
         "evidence_unreachable": 1,
@@ -861,7 +991,7 @@
         "readings": [
           {
             "event_time": "",
-            "evidence_id": "E-00007",
+            "evidence_id": "E-00012",
             "note": "",
             "position": "SILENT",
             "publication_time": "",
@@ -872,7 +1002,7 @@
         ],
         "result": "SOURCE_UNAVAILABLE",
         "roles": {
-          "E-00007": "DISREGARDED"
+          "E-00012": "DISREGARDED"
         },
         "rules": "provenance-adjudication-1",
         "schema": 1,
@@ -886,23 +1016,23 @@
       "evidence": [
         {
           "authority": "OFFICIAL",
-          "claim_id": "C-00006",
+          "claim_id": "C-00010",
           "context": "a dead link",
           "event_time": "",
-          "evidence_id": "E-00007",
+          "evidence_id": "E-00012",
           "http_status": 404,
           "note": "",
-          "observation_time": "2026-10-05T21:24:10Z",
+          "observation_time": "2026-10-05T22:30:40Z",
           "position": "SILENT",
           "publication_time": "",
           "quote": "",
           "role": "DISREGARDED",
           "source_class": "UNKNOWN",
           "source_host": "raw.githubusercontent.com",
-          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/5560065f58bdcd92809b863568d18aee785a9c0d/fixtures/no-such-document.txt",
+          "source_url": "https://raw.githubusercontent.com/Olawalter/PROVENANCE/ca8307a7ab549f4ed659a20e902f34ffabc3535d/fixtures/no-such-document.txt",
           "status": "UNREACHABLE",
-          "submitted_at": "2026-10-05T21:24:00Z",
-          "submitted_by": "0xC3972F14F9FCB1aC2E3Fd73096f295f483A6a82e"
+          "submitted_at": "2026-10-05T22:30:30Z",
+          "submitted_by": "0xb7B7d51f951C12F1ba3a035Ce48E11476f1F891a"
         }
       ]
     }
@@ -912,14 +1042,14 @@
       "step": "a stranger freezes a claim",
       "method": "freeze_claim",
       "caller": "other",
-      "tx": "0x1985c95204d153516c304b2ac5f7400dd2b8dba67385272ddcaac87395091d5d",
+      "tx": "0xef5482cd70dcd5428ee623a1e2c9904d1a492bc3a2ef2d7d277166b152d8558f",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 3,
+        "idle": 2
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] only the account that declared this claim can do that\"}"
     },
@@ -927,14 +1057,14 @@
       "step": "evidence before freezing",
       "method": "submit_evidence",
       "caller": "submitter",
-      "tx": "0x423232cc045f68ea407041e158414370c9125ed7035d31c17d936a72a0b530fa",
+      "tx": "0xf7c98d625cf3c70ad32737a381df210ff99f5d280e89dcaef4c1289f74845865",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 3,
+        "idle": 2
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] this claim is not frozen yet\"}"
     },
@@ -942,7 +1072,7 @@
       "step": "adjudicate an unfrozen claim",
       "method": "adjudicate",
       "caller": "reader",
-      "tx": "0x2af8a7533c3e4641ecef96e88b2492e3fbd4397be3eeddf317d2c5dae8c07873",
+      "tx": "0xc26f8950f1393d68d35b10c365b98026769d53eae0e2007a9f874bab5f1103ca",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
@@ -957,14 +1087,13 @@
       "step": "change the policy after freezing",
       "method": "freeze_claim",
       "caller": "creator",
-      "tx": "0x8b0075804536d8b5bda6ffdc7bcaf23a502eb7cde097c50ccdd2d938c106c854",
+      "tx": "0x0d2cf626042cd4c57a72d123edc89dd68d87ca932a2ab5ebd228cf6db6dc7624",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 5
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] this claim is already frozen; declare a new one to change it\"}"
     },
@@ -972,14 +1101,14 @@
       "step": "submit the same source twice",
       "method": "submit_evidence",
       "caller": "other",
-      "tx": "0xb9735d227ad29b1b25077e9e100b0e8a559b60b2d32c16c8b263963b41355d6c",
+      "tx": "0x13f5f992ae9b504c90fb03d2a0bf315b7b705fec6ccaac5bc1b12b2aeb7a1b4c",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "idle": 2,
-        "agree": 3
+        "agree": 4,
+        "idle": 1
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] this source is already evidence on this claim\"}"
     },
@@ -987,14 +1116,14 @@
       "step": "cancel a claim that has evidence",
       "method": "cancel_claim",
       "caller": "creator",
-      "tx": "0xac81e5f6a7664762cc9b26ba85f5b42011bf07d2dcba95372cdf6a80a511de89",
+      "tx": "0x421600453899c257cb60ba2449ecf084eb9743dfa15e48532a3a3acc5ab9096d",
       "status": "ACCEPTED",
       "consensus": "MAJORITY_AGREE",
       "execution": "ERROR",
       "refused": true,
       "votes": {
-        "agree": 3,
-        "idle": 2
+        "idle": 2,
+        "agree": 3
       },
       "refusal": "{\"status\": \"rollback\", \"payload\": \"[EXPECTED] evidence has been submitted; this claim cannot be cancelled\"}"
     }
@@ -1024,8 +1153,8 @@
       "UNRESOLVED"
     ],
     "counts": {
-      "adjudications": 6,
-      "claims": 7,
+      "adjudications": 9,
+      "claims": 11,
       "settlements": 0
     },
     "escrow_held": "0",
@@ -1082,5 +1211,5 @@
     ],
     "version": "1.0.0"
   },
-  "finished_at": "2026-10-05T21:26:19Z"
+  "finished_at": "2026-10-05T22:32:54Z"
 }
