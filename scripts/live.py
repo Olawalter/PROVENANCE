@@ -186,6 +186,29 @@ def main() -> int:
     run = Run(address, pin)
     say(f"PROVENANCE live run against {address}")
     say(f"fixtures pinned at {pin[:12]}")
+
+    # Check the pinned fixtures resolve before spending twenty minutes of
+    # consensus rounds on them. A commit that has not been pushed yet produces
+    # a URL that 404s, every source reads UNAVAILABLE, and the run looks like a
+    # protocol failure when it is an operational one.
+    import urllib.request
+    import urllib.error
+    missing = []
+    for name in ("official-status", "regulator-notice", "press-report",
+                 "stale-report", "hostile-page"):
+        url = f"{RAW}/{pin}/fixtures/{name}.txt"
+        try:
+            with urllib.request.urlopen(url, timeout=30) as answer:
+                if answer.status != 200:
+                    missing.append(name)
+        except Exception:
+            missing.append(name)
+    if missing:
+        raise Failed(
+            f"the pinned fixtures are not reachable ({', '.join(missing)}). "
+            f"Commit {pin[:12]} is probably not pushed yet: push it, then run "
+            f"this again.")
+    say("fixtures   reachable at the pinned commit")
     say()
 
     protocol = run.read("get_protocol")
