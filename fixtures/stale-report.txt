@@ -1,0 +1,10 @@
+Daily Ledger - Acme Exchange halts withdrawals
+
+Acme Exchange has halted all customer withdrawals with immediate effect, the
+company said on 26 September 2026, citing an operational incident. The company
+gave no timetable for their return.
+
+Published 09:30 UTC on 26 September 2026.
+
+(This is a controlled test fixture. It was accurate when it was written, and it
+is about an earlier state of the world.)

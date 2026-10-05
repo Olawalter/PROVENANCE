@@ -1,0 +1,9 @@
+Markets Authority - Market notice 2026-0928
+
+The authority confirms that Acme Exchange restored customer withdrawals on
+28 September 2026 at 13:42 UTC, following the operational suspension reported
+on 26 September 2026.
+
+Published 15:00 UTC on 28 September 2026.
+
+(This is a controlled test fixture. The Markets Authority does not exist.)

@@ -1,0 +1,9 @@
+Daily Ledger - Acme Exchange withdrawals resume
+
+Acme Exchange said withdrawals resumed early on Monday afternoon. According to
+the exchange's own status page, withdrawals resumed at 13:42 UTC on
+28 September 2026. The company declined further comment.
+
+Published 14:30 UTC on 28 September 2026.
+
+(This is a controlled test fixture.)

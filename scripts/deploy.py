@@ -139,9 +139,12 @@ def main() -> int:
         return 1
 
     say("deploying (gasless on StudioNet; the deployer holds no privileges)")
-    tx_hash = client.deploy_contract(code=code, args=[], wait_transaction_status="FINALIZED")
-    receipt = tx_hash if isinstance(tx_hash, dict) else client.wait_for_transaction_receipt(
-        transaction_hash=tx_hash, status="FINALIZED")
+    tx_hash = client.deploy_contract(code=code, args=[])
+    say(f"submitted  {tx_hash}")
+    # FINALIZED, not ACCEPTED: the record should say what was watched, and
+    # waiting the appeal window out is the claim worth making
+    receipt = client.wait_for_transaction_receipt(
+        transaction_hash=tx_hash, status="FINALIZED", interval=4000, retries=200)
     tx_id = receipt.get("tx_id") or receipt.get("hash") or str(tx_hash)
     address = (receipt.get("data", {}) or {}).get("contract_address") \
         or receipt.get("contract_address")

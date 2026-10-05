@@ -1,0 +1,8 @@
+Acme Exchange - Service status
+
+Withdrawals resumed at 13:42 UTC on 28 September 2026 for all verified
+accounts. Deposits were unaffected throughout the incident.
+
+This notice was published at 13:44 UTC on 28 September 2026.
+
+(This is a controlled test fixture. Acme Exchange does not exist.)
