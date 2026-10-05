@@ -82,7 +82,7 @@ def lines():
     w("| | |")
     w("| --- | --- |")
     w(f"| Network | {LIVE['network']}, chain `{LIVE['chain_id']}` |")
-    w(f"| Contract | [`{LIVE['contract']}`]({DEPLOY['explorer']}) |")
+    w(f"| Contract | [`{DEPLOY['contract_address']}`]({DEPLOY['explorer']}) |")
     w(f"| Deployment | {tx_link(DEPLOY['deploy_tx'])}, {DEPLOY['deploy_status']} |")
     w(f"| Contract bytes | `sha256:{DEPLOY['onchain_sha256'][:16]}...`, identical "
       f"to `{DEPLOY['source']}` at `{DEPLOY['source_commit'][:10]}` |")
