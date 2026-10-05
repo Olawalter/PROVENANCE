@@ -2,16 +2,16 @@
   "network": "GenLayer StudioNet",
   "chain_id": 61999,
   "rpc": "https://studio.genlayer.com/api",
-  "contract_address": "0xD89796f8842d6734687D81C221E08697004E7f9E",
-  "explorer": "https://explorer-studio.genlayer.com/address/0xD89796f8842d6734687D81C221E08697004E7f9E",
-  "deploy_tx": "0x2eb4feca40b828763a56e48a6c169a5098951ee869f9bd81dc347dd90e032939",
+  "contract_address": "0x28e3BF2A6B644BA280f66E60263Fb492B0Cb1d24",
+  "explorer": "https://explorer-studio.genlayer.com/address/0x28e3BF2A6B644BA280f66E60263Fb492B0Cb1d24",
+  "deploy_tx": "0x8928cba0ec8f4dfcd2604a81c9aadd29e1efd29bf313127b035e6e4d7bb40695",
   "deploy_status": "FINALIZED",
   "deploy_execution": "SUCCESS",
   "source": "contracts/provenance.py",
-  "source_commit": "daae80580b22e57a160771d710cb02335064b97a",
-  "source_sha256": "b23aa90b89ffb2a29ff5ab38c5a60553162b6c4a16b50428bd0143dc13439237",
-  "source_bytes": 69642,
-  "onchain_sha256": "b23aa90b89ffb2a29ff5ab38c5a60553162b6c4a16b50428bd0143dc13439237",
+  "source_commit": "86faf644b7a0b4b783a3df9dff151bb37fa788e7",
+  "source_sha256": "678a949577da62cf0568e565ce0592d4beeabddc97968da9172fa14acbe8860f",
+  "source_bytes": 70550,
+  "onchain_sha256": "678a949577da62cf0568e565ce0592d4beeabddc97968da9172fa14acbe8860f",
   "byte_identical": true,
   "genvm_runner": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6",
   "methods": [
@@ -33,5 +33,5 @@
     "submit_evidence",
     "supersede"
   ],
-  "deployed_at": "2026-10-05T22:00:28Z"
+  "deployed_at": "2026-10-05T22:30:33Z"
 }

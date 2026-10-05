@@ -10,7 +10,7 @@
 | | |
 | --- | --- |
 | Network | GenLayer StudioNet, chain `61999` |
-| Contract | [`0xD89796f8842d6734687D81C221E08697004E7f9E`](https://explorer-studio.genlayer.com/address/0xD89796f8842d6734687D81C221E08697004E7f9E) |
+| Contract | [`0x28e3BF2A6B644BA280f66E60263Fb492B0Cb1d24`](https://explorer-studio.genlayer.com/address/0x28e3BF2A6B644BA280f66E60263Fb492B0Cb1d24) |
 | Source | [`contracts/provenance.py`](contracts/provenance.py), byte-identical to the deployed bytes ([record](docs/deployment.json)) |
 | Runner | `py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6` |
 | Console | Next.js App Router, wallet-signed writes, no server of its own |
