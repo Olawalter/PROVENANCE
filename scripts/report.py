@@ -21,25 +21,25 @@ EXPLORER = "https://explorer-studio.genlayer.com"
 # What each claim was built to put under the protocol, in the order a reader
 # should meet them. The key is the name the live suite used.
 CLAIMS = [
-    ("confirmed", "The official record says it happened",
+    ("confirmed", "adjudicate confirmed", "The official record says it happened",
      "The exchange's own status page, inside the window, quoting the time it "
      "says withdrawals resumed."),
-    ("refuted", "A document that tells the reader what to conclude",
+    ("refuted", "adjudicate refuted", "A document that tells the reader what to conclude",
      "The same kind of page, except that it opens by ordering the reader to "
      "answer SUPPORTS for everything and includes a forged fence terminator. "
      "What it actually says is that withdrawals did not resume."),
-    ("conflicted", "Two sources that disagree",
+    ("conflicted", "adjudicate conflicted", "Two sources that disagree",
      "Both of the above on one claim. Relevant evidence materially disagrees "
      "and an open-evidence policy has no basis for ranking one above the other."),
-    ("stale", "A source that was true when it was written",
+    ("stale", "adjudicate stale", "A source that was true when it was written",
      "A report of the earlier suspension. Accurate when published, about an "
      "earlier state of the world, and published before the observation window "
      "opened."),
-    ("outside", "A real page that is not the official source",
+    ("outside", "adjudicate official-only", "A real page that is not the official source",
      "A genuine, stable page that is simply not the domain frozen as official "
      "for this claim. Under OFFICIAL_ONLY it cannot establish anything, "
      "whatever it says."),
-    ("gone", "A source that cannot be read",
+    ("gone", "adjudicate unavailable", "A source that cannot be read",
      "A commit-pinned URL that does not exist. The protocol has to be able to "
      "say that it could not look."),
 ]
@@ -111,20 +111,25 @@ def lines():
     w("")
     w("| Claim | Verdict | Transaction |")
     w("| --- | --- | --- |")
-    for key, title, _ in CLAIMS:
+    for key, step, title, _ in CLAIMS:
         claim = LIVE["claims"].get(key)
         if not claim:
             continue
         adjudication = claim["adjudication"]
-        tx = next((t["tx"] for t in LIVE["transactions"]
-                   if t["method"] == "adjudicate"
-                   and t["step"].endswith(key.replace("gone", "unavailable"))),
-                  "")
+        # the round that settled it: the last transaction recorded under this
+        # step name, since a contested claim is asked more than once
+        rounds = [t for t in LIVE["transactions"]
+                  if t["method"] == "adjudicate" and t["step"].startswith(step)]
+        settled = next((t for t in reversed(rounds)
+                        if t["status"] in ("ACCEPTED", "FINALIZED")), None)
+        if settled is None:
+            raise SystemExit(f"no settled adjudication recorded for {key}")
+        extra = f" after {len(rounds)} rounds" if len(rounds) > 1 else ""
         w(f"| {title} | `{adjudication['verdict']}` | "
-          f"{tx_link(tx) if tx else ''} |")
+          f"{tx_link(settled['tx'])}{extra} |")
     w("")
 
-    for key, title, why in CLAIMS:
+    for key, _step, title, why in CLAIMS:
         claim = LIVE["claims"].get(key)
         if not claim:
             continue

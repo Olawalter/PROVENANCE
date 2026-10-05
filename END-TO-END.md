@@ -33,9 +33,9 @@ Four accounts, because a protocol whose rules only hold for the account that wro
 | --- | --- | --- |
 | The official record says it happened | `CONFIRMED` | [`0x0b82ef4a`](https://explorer-studio.genlayer.com/tx/0x0b82ef4abf77e1d920972fe461c5120527246d2a46f3db7497a6a947d1ce7f29) |
 | A document that tells the reader what to conclude | `REFUTED` | [`0x1516fcf6`](https://explorer-studio.genlayer.com/tx/0x1516fcf6afa9c5545a815bfedfd0dd6693a13c66c81171d6e148428637d969a5) |
-| Two sources that disagree | `CONFLICTED` | [`0x83b756b8`](https://explorer-studio.genlayer.com/tx/0x83b756b8ee8ad9a956aa935432a1381a6acc83f359fa120534c863be78510488) |
+| Two sources that disagree | `CONFLICTED` | [`0xdd4f5093`](https://explorer-studio.genlayer.com/tx/0xdd4f5093b38cde0cb47f3e0770b935cd81e28d56d20d6c5f3ea394fa09d4760b) after 2 rounds |
 | A source that was true when it was written | `INSUFFICIENT` | [`0xb13623f7`](https://explorer-studio.genlayer.com/tx/0xb13623f724226eb8810cdb675025823de430c4dbccde592f5e62be000e6b4d9e) |
-| A real page that is not the official source | `INSUFFICIENT` |  |
+| A real page that is not the official source | `INSUFFICIENT` | [`0x61135b94`](https://explorer-studio.genlayer.com/tx/0x61135b94df1050182ab2f5fd5be0adf786138f4fa9011fbc071af07eb57917c5) |
 | A source that cannot be read | `UNAVAILABLE` | [`0xbcad0d2b`](https://explorer-studio.genlayer.com/tx/0xbcad0d2b94b971157deb76ee92b89df68079f6aab58a554510248770ebf7b435) |
 
 ### The official record says it happened
