@@ -1,0 +1,13 @@
+# Line endings are part of what this repository claims.
+#
+# The contract's bytes are hashed, deployed and compared against the chain, so
+# a working copy that swaps LF for CRLF produces a file that hashes differently
+# on one machine than another -- and "byte-identical to the deployed bytes"
+# stops meaning anything the moment it depends on who checked it out.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.woff binary
+*.woff2 binary
+*.ico binary

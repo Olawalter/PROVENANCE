@@ -1,0 +1,9 @@
+# The contract is linted and tested locally, and deployed with genlayer-py,
+# which is the SDK proven to reach StudioNet. The console uses genlayer-js.
+pytest>=8
+genlayer-py>=0.16
+
+# 0.11.0 cannot validate against a genvm-manager v0.6 bundle: it looks for a
+# per-runner .tar and those bundles ship .zip. A plain `pip install` silently
+# keeps the old version -- use --force-reinstall --no-deps.
+genvm-linter==0.11.1rc2

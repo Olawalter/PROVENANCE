@@ -1,0 +1,32 @@
+# secrets and local state
+.env
+.env.local
+.env.*.local
+.data/
+
+# dependencies and builds
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# python
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+
+# gltest scratch
+artifacts/
+
+# working logs
+*.log
+
+# os, editors and local tooling
+.claude/
+.DS_Store
+Thumbs.db
+.vscode/
