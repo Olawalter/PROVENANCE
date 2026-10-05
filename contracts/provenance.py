@@ -588,19 +588,31 @@ def _temporal(reading: dict, conditions: dict) -> dict:
 def _decisive_of(reading: dict, conditions: dict) -> dict:
     """The fields of one reading that can change what the protocol records.
 
-    Deliberately excluded: the quote's wording, the note, the exact timestamps,
-    the HTTP status. Two honest readers never write the same sentence about the
-    same page, and making prose decisive would fail every round while making
-    nothing safer."""
+    Narrowed to what the *frozen policy* can actually act on, which is not the
+    same set for every claim. Two honest readers can reasonably differ about
+    whether a page is the announcement itself or merely unclear, and under a
+    policy that never asks the question, failing the round over it costs real
+    consensus rounds and settles nothing. Live rounds really did fail this way
+    before this was narrowed.
+
+    Deliberately excluded everywhere: the quote's wording, the note, the exact
+    timestamps, the HTTP status. Two honest readers never write the same
+    sentence about the same page, and making prose decisive would fail every
+    round while making nothing safer."""
     temporal = _temporal(reading, conditions)
-    return {
+    decisive = {
         "evidence_id": reading["evidence_id"],
         "reachable": bool(reading["reachable"]),
         "position": reading["position"],
-        "source_class": reading["source_class"],
-        "event_before_relevant": temporal["event_before_relevant"],
         "published_in_window": temporal["published_in_window"],
     }
+    # only this policy ranks a primary record against a report of one
+    if conditions["source_policy"] == P_PRIMARY_PLUS_CORROBORATION:
+        decisive["source_class"] = reading["source_class"]
+    # only this claim type makes the event's own time a condition
+    if conditions["claim_type"] == T_TEMPORAL_FACT:
+        decisive["event_before_relevant"] = temporal["event_before_relevant"]
+    return decisive
 
 
 def _decisive(payload: dict, conditions: dict) -> str:
@@ -770,9 +782,11 @@ def _settle(payload: dict, conditions: dict, items: dict) -> dict:
             if reading["position"] == POS_CONTRADICTS:
                 role = ROLE_CONTRADICTORY
             elif reading["position"] == POS_SUPPORTS:
-                decisive = verdict == V_CONFIRMED and (
-                    reading["source_class"] == C_PRIMARY or not primary_supports)
-                role = ROLE_DECISIVE if decisive else ROLE_CORROBORATING
+                # a source that was counted and carried a confirmation is
+                # decisive; one counted toward a verdict it did not carry is
+                # corroborating. What kind of document it was is recorded and
+                # shown, and does not decide this.
+                role = ROLE_DECISIVE if verdict == V_CONFIRMED                     else ROLE_CORROBORATING
         roles[reading["evidence_id"]] = role
 
     result = R_INSUFFICIENT_EVIDENCE

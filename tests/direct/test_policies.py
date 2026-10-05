@@ -174,12 +174,26 @@ class TestPrimaryPlusCorroboration:
         adjudicate(h, claim_id)
         assert verdict(h, claim_id) == "INSUFFICIENT"
 
-    def test_the_decisive_source_is_the_primary_one(self, h):
+    def test_every_source_that_carried_it_is_recorded_as_decisive(self, h):
         claim_id = ready(h)
         official = with_official(h, claim_id)
         report = with_report(h, claim_id)
         adjudicate(h, claim_id)
+        # Both counted, and together they satisfied the policy; neither one
+        # would have. What kind of document each was is recorded separately and
+        # shown, and it does not decide the role -- making it decide would mean
+        # validators had to agree about it, which costs rounds and settles
+        # nothing.
         assert h.contract.get_evidence(official)["role"] == "DECISIVE"
+        assert h.contract.get_evidence(report)["role"] == "DECISIVE"
+        assert h.contract.get_evidence(official)["source_class"] == "PRIMARY"
+        assert h.contract.get_evidence(report)["source_class"] == "SECONDARY"
+
+    def test_a_source_counted_toward_a_verdict_it_did_not_carry_corroborates(self, h):
+        claim_id = ready(h)
+        report = with_report(h, claim_id)   # no primary record: INSUFFICIENT
+        adjudicate(h, claim_id)
+        assert h.contract.get_claim(claim_id)["verdict"] == "INSUFFICIENT"
         assert h.contract.get_evidence(report)["role"] == "CORROBORATING"
 
 

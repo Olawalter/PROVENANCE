@@ -130,7 +130,25 @@ class TestTheLeaderIsNotTrusted:
         assert h.contract.get_claim(claim_id)["verdict"] == ""
         assert h.contract.get_claim(claim_id)["adjudication_id"] == ""
 
-    def test_a_leader_calling_a_report_the_primary_record_is_rejected(self, h):
+    def test_nodes_may_differ_about_a_field_the_frozen_policy_cannot_act_on(self, h):
+        # OPEN_EVIDENCE never asks whether a document is the announcement
+        # itself, so two readers differing about that changes nothing and must
+        # not cost a round. Live rounds really did fail this way before the
+        # comparison was narrowed to what each policy uses.
+        claim_id = ready(h, policy="OPEN_EVIDENCE")
+        h.document(REPORT_URL, "Acme Exchange withdrawals resumed at 13:42 UTC on "
+                               "28 September 2026.")
+        h.says(REPORT_URL, position="SUPPORTS", source_class="PRIMARY",
+               quote="withdrawals resumed at 13:42 UTC on 28 September",
+               publication_time="2026-09-28T14:30:00Z", role="leader")
+        h.says(REPORT_URL, position="SUPPORTS", source_class="UNKNOWN",
+               quote="withdrawals resumed at 13:42 UTC on 28 September",
+               publication_time="2026-09-28T14:30:00Z", role="validator")
+        submit(h, claim_id, REPORT_URL)
+        adjudicate(h, claim_id)
+        assert h.contract.get_claim(claim_id)["verdict"] == "CONFIRMED"
+
+    def test_but_they_may_not_under_a_policy_that_ranks_sources(self, h):
         claim_id = ready(h)
         h.document(REPORT_URL, "According to the exchange, withdrawals resumed at "
                                "13:42 UTC on 28 September 2026.")
