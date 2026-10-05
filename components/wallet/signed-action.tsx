@@ -33,9 +33,8 @@ export function SignedAction(
       await wallet.connect();
       return;
     }
-    const account = { address: wallet.address as `0x${string}`,
-                      provider: wallet.provider } as never;
-    const client = walletClient(account) as unknown as Parameters<typeof send>[0];
+    const client = walletClient(
+      wallet.address, wallet.provider) as unknown as Parameters<typeof send>[0];
     const finished = await send(client, call(), contractAddress(), setState);
     onDone?.(finished);
   }, [wallet, call, onDone]);

@@ -104,4 +104,6 @@ that set and no other, is in [adjudication.md](adjudication.md).
 | --- | --- |
 | `genvm-lint` | `genvm-linter==0.11.1rc2` -- 0.11.0 cannot validate against a genvm-manager v0.6 bundle (it looks for a per-runner `.tar`; those bundles ship `.zip`), and a plain `pip install` silently keeps the old version |
 | Deployment / live suite | `genlayer-js` |
-| Console | Next.js 16 App Router, React 19, TypeScript, Tailwind, `genlayer-js`, injected EIP-1193 wallet |
+| Console | Next.js 16 App Router, React 19, TypeScript, Tailwind, injected EIP-1193 wallet |
+| Console SDK | `genlayer-js@1.1.8` -- **not** 2.0.0-rc.1, whose calldata this runner refuses |
+| Transaction Kit | not used: `@genlayer/transaction-kit@0.1.0-rc.1` depends on `genlayer-js@2.0.0-rc.1`, which cannot reach this chain |

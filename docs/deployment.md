@@ -156,6 +156,23 @@ not on GitHub yet, every URL 404s, every source reads `UNAVAILABLE`, and the
 run looks like a protocol failure. The suite now checks the pinned URLs resolve
 before the first write and says which problem it is.
 
+## The Transaction Kit, and why it is not here
+
+The build specification lists the "current compatible GenLayer Transaction
+Kit" in the stack. On 5 October 2026 the published kit is
+`@genlayer/transaction-kit@0.1.0-rc.1`, and it depends on
+`genlayer-js@2.0.0-rc.1` -- the version whose calldata encoding StudioNet's
+runner refuses with `execution failed` (see the trap above). Installing it
+would reintroduce exactly the failure this build spent an hour diagnosing.
+
+So the console uses `genlayer-js@1.1.8` directly with an injected EIP-1193
+wallet: the same transaction lifecycle, the same receipts, and no layer in
+between that cannot reach this chain. If a kit release pins a 1.x client, it
+becomes the better choice and this note is the reason to revisit it.
+
+The lifecycle the console reports is in `lib/genlayer/transaction.ts`, and it
+reports only states the SDK actually gives it.
+
 ## Networks
 
 | Network | Chain | Notes |

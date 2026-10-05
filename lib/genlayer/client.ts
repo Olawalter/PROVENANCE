@@ -7,7 +7,6 @@
  */
 import { createClient } from "genlayer-js";
 import { studionet } from "genlayer-js/chains";
-import type { Account } from "genlayer-js/types";
 
 import { configResult } from "@/lib/config/env";
 
@@ -29,7 +28,19 @@ export function readClient() {
   return createClient({ chain: chain() });
 }
 
-/** A client bound to the connected wallet, for calls the person signs. */
-export function walletClient(account: Account) {
-  return createClient({ chain: chain(), account });
+/**
+ * A client bound to the connected wallet, for calls the person signs.
+ *
+ * The account has to be the **address**, with the injected provider passed
+ * alongside it. The SDK routes signing methods to the provider only when the
+ * account is not an object -- hand it an object and it looks for a local key
+ * instead, and the wallet is never asked. That is not guessable from the
+ * types; it is in the transport's own branch.
+ */
+export function walletClient(address: string, provider: unknown) {
+  return createClient({
+    chain: chain(),
+    account: address as `0x${string}`,
+    provider,
+  } as never);
 }

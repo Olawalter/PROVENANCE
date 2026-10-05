@@ -154,7 +154,10 @@ that a probe script outside the project can silently load a different one.
 ## The wallet
 
 An injected EIP-1193 wallet, discovered through EIP-6963 where the wallet
-announces itself. No custodial authentication, no embedded wallet, and the
+announces itself, driving `genlayer-js` directly. The published Transaction Kit
+pins the client release this chain's runner refuses, so it is deliberately not
+used here -- [docs/deployment.md](docs/deployment.md) says why, and what would
+change the answer. No custodial authentication, no embedded wallet, and the
 wrong network is always said out loud rather than silently producing
 transactions that vanish.
 
