@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+/*
+ * Institutional, editorial, technical. The palette and the three typefaces are
+ * fixed by the build specification; everything else here exists to keep the
+ * evidence legible and the status language quiet.
+ */
+
+:root {
+  --background: #F7F7F4;
+  --surface: #FFFFFF;
+  --text: #111312;
+  --muted: #626863;
+  --border: #DCDFDA;
+  --primary: #176B4D;
+  --light: #E7F1EC;
+  --refuted: #A83D32;
+  --conflict: #A56A16;
+
+  --refuted-light: #F7EAE8;
+  --conflict-light: #F8F0E2;
+  --shadow: 0 1px 2px rgba(17, 19, 18, 0.04);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-instrument-serif);
+  --font-mono: var(--font-geist-mono);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-weight: 560; letter-spacing: -0.012em; line-height: 1.2; }
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.15rem; }
+h3 { font-size: 1rem; }
+
+/* Instrument Serif, sparingly: the editorial line at the top of a page, and
+   nowhere else. */
+.editorial {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.mono { font-family: var(--font-geist-mono), ui-monospace, monospace; }
+
+.lede { color: var(--muted); font-size: 0.975rem; }
+
+.label {
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 540;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* -- surfaces -------------------------------------------------------------- */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+}
+
+.panel-head {
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 1rem;
+}
+
+.rule { border-top: 1px solid var(--border); }
+
+/* -- status, kept visually restrained -------------------------------------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.12rem 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 540;
+  white-space: nowrap;
+}
+
+.chip .glyph { font-family: var(--font-geist-mono), monospace; opacity: 0.85; }
+
+.tone-confirmed { background: var(--light); border-color: #C3DED2; color: var(--primary); }
+.tone-refuted { background: var(--refuted-light); border-color: #E7C8C3; color: var(--refuted); }
+.tone-conflict { background: var(--conflict-light); border-color: #E8D6B2; color: var(--conflict); }
+.tone-neutral { background: var(--surface); border-color: var(--border); color: var(--muted); }
+
+/* -- controls -------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.42rem 0.8rem;
+  font-size: 0.86rem;
+  font-weight: 520;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.btn:hover:not(:disabled) { border-color: var(--muted); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) { background: #12573E; border-color: #12573E; }
+
+.btn-quiet { border-color: transparent; background: transparent; color: var(--muted); }
+.btn-quiet:hover:not(:disabled) { color: var(--text); border-color: var(--border); }
+
+.field {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--surface);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.field:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+
+/* -- the evidence timeline ------------------------------------------------- */
+
+.timeline { position: relative; display: grid; gap: 0; }
+
+.timeline-step {
+  display: grid;
+  grid-template-columns: 7.5rem 1px 1fr;
+  gap: 0 1rem;
+  align-items: start;
+  padding-bottom: 1.1rem;
+  position: relative;
+}
+
+.timeline-step:last-child { padding-bottom: 0; }
+
+.timeline-rail {
+  background: var(--border);
+  width: 1px;
+  height: 100%;
+  position: relative;
+}
+
+.timeline-step:last-child .timeline-rail { height: 0.5rem; }
+
+.timeline-dot {
+  position: absolute;
+  left: -3.5px;
+  top: 0.35rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--muted);
+}
+
+.timeline-step[data-strong="true"] .timeline-dot {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.document {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.7rem;
+  max-height: 22rem;
+  overflow: auto;
+}
+
+table { border-collapse: collapse; width: 100%; }
+th { text-align: left; font-weight: 540; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

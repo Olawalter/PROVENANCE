@@ -1,6 +1,7 @@
 # secrets and local state
 .env
 .env.local
+.env.local
 .env.*.local
 .data/
 
@@ -24,6 +25,12 @@ artifacts/
 
 # working logs
 *.log
+
+# ...except the console's defaults, which are published configuration:
+# a contract address that is already in the README. Without it a fresh
+# clone starts pointed at nothing.
+!.env
+!.env.example
 
 # os, editors and local tooling
 .claude/

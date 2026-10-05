@@ -39,6 +39,7 @@
 
 from genlayer import *
 
+import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -603,9 +604,14 @@ def _decisive_of(reading: dict, conditions: dict) -> dict:
 
 
 def _decisive(payload: dict, conditions: dict) -> str:
-    """One string standing for everything in a round that has a consequence."""
+    """One string standing for everything in a round that has a consequence.
+
+    Hashed rather than stored whole: the readings themselves are already in the
+    record, so keeping a second copy of them under the name "digest" would put
+    a wall of JSON on a page and still prove nothing the readings do not."""
     items = [_decisive_of(r, conditions) for r in payload["readings"]]
-    return _canon(sorted(items, key=lambda i: i["evidence_id"]))
+    canonical = _canon(sorted(items, key=lambda i: i["evidence_id"]))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def _error_class(message: str) -> str:
